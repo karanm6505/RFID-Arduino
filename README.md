@@ -1,6 +1,6 @@
 # RFID Attendance System
 
-![RFID Attendance System Logo](public/attendance-icon.svg)
+![RFID Attendance System Logo](website/public/attendance-icon.svg)
 
 > A modern, responsive web application for real-time attendance tracking using RFID technology
 
