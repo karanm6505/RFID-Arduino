@@ -25,7 +25,7 @@ function Header() {
             <span className="sr-only">Toggle theme</span>
           </Button>
           <Button variant="ghost" size="icon" asChild className="text-primary-foreground">
-            <a href="https://github.com/yourusername/MPCA_proj" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/karanm6505/RFID-Arduino" target="_blank" rel="noopener noreferrer">
               <GithubIcon className="h-5 w-5" />
               <span className="sr-only">GitHub</span>
             </a>
