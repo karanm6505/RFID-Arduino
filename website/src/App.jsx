@@ -48,8 +48,8 @@ function App() {
         if (parts.length === 2) {
           const entry = {
             timestamp: new Date(),
-            name: parts[0].trim(),
-            srn: parts[1].trim()
+            name: parts[0].trim() || "Unknown Name", // Use "Unknown Name" instead of blank space
+            srn: parts[1].trim() || " "   // Keep blank space for empty SRN
           }
           
           setAttendanceData(prev => {
@@ -63,7 +63,24 @@ function App() {
             return newData
           })
         } else {
-          console.log('Raw data:', data)
+          // Handle invalid data format by creating entry with Unknown Name
+          console.log('Invalid data format received:', data)
+          const entry = {
+            timestamp: new Date(),
+            name: "Unknown Name", // Use "Unknown Name" for missing name
+            srn: data.trim() || " " // Use the raw data as SRN or blank if empty
+          }
+          
+          setAttendanceData(prev => {
+            const newData = [...prev, entry]
+            // Update stats
+            const uniqueSRNs = new Set(newData.map(item => item.srn))
+            setStats({
+              total: newData.length,
+              unique: uniqueSRNs.size
+            })
+            return newData
+          })
         }
       } catch (error) {
         console.error('Error parsing data:', error)
